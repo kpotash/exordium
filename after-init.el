@@ -10,6 +10,7 @@
 (global-set-key [f3] 'kill-region)
 (global-set-key [f4] 'kill-ring-save)
 (global-set-key [f5] 'yank)
+(global-set-key [(S-f5)] 'helm-show-kill-ring)
 
 (global-set-key [f6] 'bury-buffer)
 (global-set-key [f7] 'other-window)
@@ -22,11 +23,17 @@
 ;(global-set-key [(S-f11)] 'magit-status)
 (global-set-key [f12] 'find-grep)
 
-(setq ac-sources '(ac-source-my-rtags ac-source-my-c-headers ac-source-words-in-all-buffer))
+(require 'auto-complete)
 (global-auto-complete-mode t)
+
+(setq-default ac-sources '(ac-source-words-in-all-buffer))
+(setq ac-auto-start 2)
+(setq ac-auto-show-menu t)
+(setq ac-delay 0)
+(ac-flyspell-workaround)
+
 (setq ac-dwim t)
 (setq ac-ignore-case nil)
-(setq ac-delay 0)
-(setq ac-auto-show-menu t)
 (setq ac-disable-faces nil)
-;(setq ac-auto-start 2)
+
+(set-background-color "darkslategrey")

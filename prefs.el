@@ -12,3 +12,4 @@
 (setq exordium-enable-electric-pair-mode nil)
 (setq exordium-line-mode nil)
 (setq exordium-yasnippet nil)
+(setq exordium-spell-check nil)

@@ -1,7 +1,7 @@
 ;; ======================================== set keys
 (global-set-key "\C-ca" 'org-agenda)
 
-(global-set-key [(meta q)] 'indent-region)
+(global-set-key (kbd "M-q") 'indent-region)
 (global-set-key [insert]   'overwrite-mode)
 
 (global-set-key [f1] 'helm-swoop)
@@ -36,4 +36,26 @@
 (setq ac-ignore-case nil)
 (setq ac-disable-faces nil)
 
-(set-background-color "darkslategrey")
+(which-function-mode 1)
+
+(require 'color-theme)
+
+(when (string-match "x86_64-unknown-linux-gnu" system-configuration)
+  (eval-after-load "color-theme"
+    '(progn
+       (color-theme-initialize)
+       (if (display-graphic-p)
+           (color-theme-gnome2)
+         (color-theme-gnome2))))
+)
+
+(require 'hlinum)
+(hlinum-activate)
+
+(require 'yasnippet)
+(setq yas-snippet-dirs '("~/addons/yasnippet/snippets"))
+;; use f8 to trigger
+(define-key yas-minor-mode-map (kbd "<tab>") nil)
+(define-key yas-minor-mode-map (kbd "TAB") nil)
+(define-key yas-minor-mode-map (kbd "<f8>") 'yas-expand)
+(yas-global-mode 1)
